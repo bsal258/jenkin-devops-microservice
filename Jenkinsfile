@@ -76,6 +76,7 @@ pipeline {
 		}
 		}
 	}
+}
 	post{
 	  always{
 		echo 'awesome'
@@ -87,4 +88,5 @@ pipeline {
 		echo 'this failed'
 	}
 	}
-}
+
+
