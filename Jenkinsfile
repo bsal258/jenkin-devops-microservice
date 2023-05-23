@@ -58,7 +58,7 @@ pipeline {
 	   steps{
 		//"docker build -t bishal258/currency-exchange-devops:$env.BUILD_TAG"
 		script{
-			docker.build("bishal258/currency-exchange-devops:${env.BUILD_TAG}")
+			dockerImage = docker.build("bishal258/currency-exchange-devops:${env.BUILD_TAG}")
 
 		}
 	
