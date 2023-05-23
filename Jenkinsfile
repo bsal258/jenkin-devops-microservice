@@ -45,12 +45,37 @@ pipeline {
 		steps{
 		echo "Test"
 	}
+	
 	}
 	stage('Integration Test'){
 		steps{
 		echo 'Integration Test'
 	}
 	}
+	stage('Package'){
+	steps{
+		sh "mvn package -DskipTests"
+
+	}
+	
+}
+	stage ('Build Docker Image'){
+	   steps{
+		//"docker build -t bishal258/currency-exchange-devops:$env.BUILD_TAG"
+		script{
+			docker.build("bishal258/currency-exchange-devops:${env.BUILD_TAG}")
+
+		}
+	
+	}
+	}
+	stage('Docker Push')
+		steps{
+			docker.withRegistry('', 'dockerhub'){
+			dockerImage.push();
+			dockerImage.push('latest');
+		}
+		}
 	}
 	post{
 	  always{
