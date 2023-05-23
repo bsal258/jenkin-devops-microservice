@@ -66,11 +66,13 @@ pipeline {
 	}
 	stage('Docker Push'){
 		steps{
+		   script {
 			docker.withRegistry('', 'dockerhub'){
 			dockerImage.push();
 			dockerImage.push('latest');
 		}
 		}
+}
 	}
 }
 	post{
