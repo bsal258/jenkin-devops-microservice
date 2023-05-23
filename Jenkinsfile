@@ -53,12 +53,11 @@ pipeline {
 	}
 	}
 	stage('Package'){
-	steps{
+		steps{
 		sh "mvn package -DskipTests"
 
 	}
-	
-}
+	}
 	stage ('Build Docker Image'){
 	   steps{
 		//"docker build -t bishal258/currency-exchange-devops:$env.BUILD_TAG"
@@ -69,7 +68,7 @@ pipeline {
 	
 	}
 	}
-	stage('Docker Push')
+	stage('Docker Push'){
 		steps{
 			docker.withRegistry('', 'dockerhub'){
 			dockerImage.push();
