@@ -21,7 +21,7 @@ pipeline {
 	  always{
 		echo 'awesome'
 	   }
-	  sucess {
+	  success {
 		echo 'this is a sucess'
 	}
 	failure{
